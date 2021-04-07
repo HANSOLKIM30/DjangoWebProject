@@ -29,6 +29,7 @@
     {% block script %}
         <script type="text/javascript">
             $(document).ready(function(){
+
                 $(".delete").on('click', function() {
                     if(confirm("정말로 삭제하시겠습니까?")) {
                         location.href = $(this).data('uri');
@@ -39,6 +40,23 @@
                     if(confirm("정말로 추천하시겠습니까?")) {
                         location.href = $(this).data('uri');
                     }
+                });
+
+                $(".page-link").on('click', function(){
+                    $("#page").val($(this).data("page"));
+                    $("#searchForm").submit();
+                });
+
+                 $("#btn_search").on('click', function() {
+                    $("#kw").val($(".kw").val());
+                    $("#page").val(1); // 검색 버튼을 누르면 1페이지부터 보일 수 있도록 value로 1을 넘겨준다.
+                    $("#searchForm").submit();
+                });
+
+                 $(".so").on('change', function() {
+                    $("#so").val($(this).val());
+                    $("#page").val(1);
+                    $("#searchForm").submit();
                 });
             });
         </script>
